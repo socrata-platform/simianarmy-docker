@@ -1,0 +1,30 @@
+#!/bin/bash
+
+export CHAOS_ENABLED=${CHAOS_ENABLED:-true}
+export CHAOS_LEASHED=${CHAOS_LEASHED:-true}
+export CHAOS_ASG_ENABLED=${CHAOS_ASG_ENABLED:-true}
+export CHAOS_ASG_PROBABILITY=${CHAOS_ASG_PROBABILITY:-1.0}
+export CHAOS_SOURCE_EMAIL=${CHAOS_SOURCE_EMAIL:-}
+export CHAOS_GLOBAL_NOTIFICATION_EMAIL=${CHAOS_GLOBAL_NOTIFICATION_EMAIL:-}
+export CHAOS_NOTIFICATIONS_ENABLED=${CHAOS_NOTIFICATIONS_ENABLED:-true}
+
+export SIMIAN_SDB_DOMAIN=${SIMIAN_SDB_DOMAIN:-SIMIAN_ARMY}
+export SIMIAN_FREQUENCY=${SIMIAN_FREQUENCY:-1.0}
+export SIMIAN_FREQUENCY_UNITS=${SIMIAN_FREQUENCY_UNITS:-HOURS}
+export SIMIAN_TIMEZONE=${SIMIAN_TIMEZONE:-America/Los_Angeles}
+export SIMIAN_MONKEYTIME=${SIMIAN_MONKEYTIME:-false}
+
+export AWS_REGION=${AWS_REGION:-us-west-2}
+export AWS_ASSUME_ROLE=${AWS_ASSUME_ROLE:-}
+export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID:-}
+export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY:-}
+
+/bin/env_parse /opt/simianarmy/src/main/resources/client.properties.j2
+/bin/env_parse /opt/simianarmy/src/main/resources/simianarmy.properties.j2
+/bin/env_parse /opt/simianarmy/src/main/resources/chaos.properties.j2
+/bin/env_parse /opt/simianarmy/src/main/resources/volumeTagging.properties.j2
+/bin/env_parse /opt/simianarmy/src/main/resources/conformity.properties.j2
+/bin/env_parse /opt/simianarmy/src/main/resources/janitor.properties.j2
+
+cd /opt/simianarmy
+./gradlew jettyRun

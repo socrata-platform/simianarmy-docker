@@ -1,0 +1,6 @@
+simianarmy.client.aws.secretKey={{ AWS_SECRET_ACCESS_KEY }}
+simianarmy.client.aws.account_key={{ AWS_ACCESS_KEY_ID }}
+simianarmy.client.aws.region={{ AWS_REGION }}
+{% if AWS_ASSUME_ROLE %}
+simianarmy.client.aws.assumeRoleArn={{ AWS_ASSUME_ROLE }}
+{% endif %}
