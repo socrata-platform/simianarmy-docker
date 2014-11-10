@@ -2,7 +2,8 @@ FROM socrata/java
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git
 
-RUN git clone https://github.com/Netflix/SimianArmy.git /opt/simianarmy
+RUN git clone https://github.com/boldfield/SimianArmy.git /opt/simianarmy
+RUN cd /opt/simianarmy; git checkout proxy-support
 RUN cd /opt/simianarmy; ./gradlew build
 
 ADD client.properties.j2 /opt/simianarmy/src/main/resources/client.properties.j2

@@ -15,6 +15,10 @@ This project is based on [Socrata Shipyard][shipyard].  Please see that project 
 - `AWS_SECRET_ACCESS_KEY` - AWS Secret Key
 - `AWS_REGION` - AWS Region
 - `AWS_ASSUME_ROLE` - AWS role ARN if assume role should be used
+- `AWS_CLIENT_PROXY_HOST` - Proxy host if required for AWS API requests
+- `AWS_CLIENT_PROXY_PORT` - Proxy port if required for AWS API requests
+- `AWS_CLIENT_PROXY_USER` - Proxy username if required for proxy connections
+- `AWS_CLIENT_PROXY_PASSWORD` - Proxy password if required for proxy connections
 
 ### Simian Army Setting
 - `SIMIAN_SDB_DOMAIN` - SDB Domain, default `SIMIAN_ARMY`

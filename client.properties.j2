@@ -4,3 +4,12 @@ simianarmy.client.aws.region={{ AWS_REGION }}
 {% if AWS_ASSUME_ROLE %}
 simianarmy.client.aws.assumeRoleArn={{ AWS_ASSUME_ROLE }}
 {% endif %}
+
+{% if AWS_CLIENT_PROXY_HOST %}
+simianarmy.client.aws.proxyHost={{ AWS_CLIENT_PROXY_HOST }}
+simianarmy.client.aws.proxyPort={{ AWS_CLIENT_PROXY_PORT }}
+{% endif %}
+{% if AWS_CLIENT_PROXY_USER %}
+simianarmy.client.aws.proxyUser={{ AWS_CLIENT_PROXY_USER }}
+simianarmy.client.aws.proxyPassword={{ AWS_CLIENT_PROXY_PASSWORD }}
+{% endif %}
