@@ -24,6 +24,12 @@ export AWS_ASSUME_ROLE=${AWS_ASSUME_ROLE:-}
 export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID:-}
 export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY:-}
 
+[[ ! -z $AWS_CLIENT_PROXY_HOST ]] && echo "systemProp.http.proxyHost=$AWS_CLIENT_PROXY_HOST" >> /opt/simianarmy/gradle.properties
+[[ ! -z $AWS_CLIENT_PROXY_PORT ]] && echo "systemProp.http.proxyPort=$AWS_CLIENT_PROXY_PORT" >> /opt/simianarmy/gradle.properties
+[[ ! -z $AWS_CLIENT_PROXY_USER ]] && echo "systemProp.http.proxyUser=$AWS_CLIENT_PROXY_USER" >> /opt/simianarmy/gradle.properties
+[[ ! -z $AWS_CLIENT_PROXY_PASSWORD ]] && echo "systemProp.http.proxyPassword=$AWS_CLIENT_PROXY_PASSWORD" >> /opt/simianarmy/gradle.properties
+[[ ! -z $GRADLE_NO_PROXY ]] && echo "systemProp.http.nonProxyHosts=$GRADLE_NO_PROXY" >> /opt/simianarmy/gradle.properties
+
 /bin/env_parse /opt/simianarmy/src/main/resources/client.properties.j2
 /bin/env_parse /opt/simianarmy/src/main/resources/simianarmy.properties.j2
 /bin/env_parse /opt/simianarmy/src/main/resources/chaos.properties.j2
