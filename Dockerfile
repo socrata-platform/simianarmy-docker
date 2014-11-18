@@ -1,9 +1,6 @@
 FROM socrata/java
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git
-
-RUN git clone https://github.com/boldfield/SimianArmy.git /opt/simianarmy
-RUN cd /opt/simianarmy; git checkout proxy-support
+RUN mkdir -p /opt/simianarmy && curl -L https://github.com/boldfield/SimianArmy/tarball/proxy-support > /tmp/proxy-support.tar && tar xvf /tmp/proxy-support.tar -C /opt/simianarmy --strip-components=1 && sed -i "s|\(apply from: file('gradle/release.gradle')\)|// \1|" /opt/simianarmy/build.gradle
 RUN cd /opt/simianarmy; ./gradlew build
 
 ADD client.properties.j2 /opt/simianarmy/src/main/resources/client.properties.j2
